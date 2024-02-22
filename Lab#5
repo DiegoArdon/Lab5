@@ -1,0 +1,112 @@
+#include <iostream>
+
+using namespace std;
+
+// 1. Suma de números pares e impares
+int sumaParesImpares(int numero, bool sumarPares) {
+    int suma = 0;
+    for (int i = 1; i <= numero; ++i) {
+        if (sumarPares && i % 2 == 0) {
+            suma += i;
+        } else if (!sumarPares && i % 2 != 0) {
+            suma += i;
+        }
+    }
+    return suma;
+}
+
+// 2. Factorial con bucle while
+unsigned long long calcularFactorial(int n) {
+    unsigned long long factorial = 1;
+    while (n > 1) {
+        factorial *= n;
+        n--;
+    }
+    return factorial;
+}
+
+// 3. Contador de dígitos
+int contarDigitos(int numero) {
+    int contador = 0;
+    do {
+        numero = numero / 10;
+        contador++;
+    } while (numero != 0);
+    return contador;
+}
+
+// 4. Ordenamiento de números ascendente
+void ordenarNumeros(int& a, int& b, int& c) {
+    if (a > b) {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+    if (a > c) {
+        int temp = a;
+        a = c;
+        c = temp;
+    }
+    if (b > c) {
+        int temp = b;
+        b = c;
+        c = temp;
+    }
+}
+
+// 5. Suma de dígitos de un número
+int sumaDigitos(int numero) {
+    int suma = 0;
+    while (numero != 0) {
+        suma += numero % 10;
+        numero /= 10;
+    }
+    return suma;
+}
+
+int main() {
+    // 1. Suma de números pares e impares
+    int numero = 10;
+    bool sumarPares = true;
+    int resultado1 = sumaParesImpares(numero, sumarPares);
+    cout << "La suma de los números ";
+    if (sumarPares) {
+        cout << "pares ";
+    } else {
+        cout << "impares ";
+    }
+    cout << "hasta " << numero << " es: " << resultado1 << endl;
+
+    // 2. Factorial con bucle while
+    int numeroFactorial;
+    cout << "Ingrese un número entero positivo para calcular su factorial: ";
+    cin >> numeroFactorial;
+    if (numeroFactorial < 0) {
+        cout << "El factorial no está definido para números negativos." << endl;
+    } else {
+        unsigned long long resultado2 = calcularFactorial(numeroFactorial);
+        cout << "El factorial de " << numeroFactorial << " es: " << resultado2 << endl;
+    }
+
+    // 3. Contador de dígitos
+    int numeroDigitos;
+    cout << "Ingrese un número entero para contar sus dígitos: ";
+    cin >> numeroDigitos;
+    int cantidadDigitos = contarDigitos(numeroDigitos);
+    cout << "El número de dígitos en " << numeroDigitos << " es: " << cantidadDigitos << endl;
+
+    // 4. Ordenamiento de números ascendente
+    int num1 = 30, num2 = 10, num3 = 20;
+    cout << "Antes de ordenar: " << num1 << ", " << num2 << ", " << num3 << endl;
+    ordenarNumeros(num1, num2, num3);
+    cout << "Después de ordenar: " << num1 << ", " << num2 << ", " << num3 << endl;
+
+    // 5. Suma de dígitos de un número
+    int numeroSumaDigitos;
+    cout << "Ingrese un número entero para sumar sus dígitos: ";
+    cin >> numeroSumaDigitos;
+    int resultado5 = sumaDigitos(numeroSumaDigitos);
+    cout << "La suma de los dígitos del número es: " << resultado5 << endl;
+
+    return 0;
+}
